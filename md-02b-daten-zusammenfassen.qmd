@@ -1,0 +1,200 @@
+---
+title: "Daten zusammenfassen und visualisieren"
+format:
+  html:
+    embed-resources: true
+editor: visual
+editor_options: 
+  chunk_output_type: console
+---
+
+## Aufgabe 1: R-Pakete laden & Daten importieren
+
+In dieser Zusatzaufgabe arbeiten wir mit den gleichen Daten wie in den Aufgaben aus `md-02a-erstelle-ein-diagramm.qmd`. Dieses Mal sollts du den Code jedoch selbst schreiben.
+
+1.  Unten wurde bereits ein Codeblock für dich erstellt.
+
+2.  Lade die gleichen R Pakete wie in `md-02a-erstelle-ein-diagramm.qmd`.
+
+```{r}
+
+
+```
+
+## Aufgabe 2: Daten transformieren - Eingrenzen & Zusammenfassen
+
+Der Code für diese Aufgabe ist bereits vorbereitet. Ein kleiner Teil ist gleich wie in `md-02a-erstelle-ein-diagramm.qmd`, jedoch wurde der Code hier noch erweitert um die Daten zusammenzufassen. Mit diesen Funktionen werden wir uns nächste Woche beschäftigen.
+
+1.  Führe den Code aus.
+
+2.  Beschreibe Zeile für Zeile mit deinen eigenen Worten was der folgende Code macht.
+
+Schreibe hier deinen Text:
+
+```{r}
+
+gapminder_2007 <- gapminder |>
+    filter(year == 2007)
+
+gapminder_summary_lifeExp_2007 <- gapminder_2007 |>
+    group_by(continent) |> 
+    summarise(
+        count = n(),
+        lifeExp = median(lifeExp)
+        )
+```
+
+3.  Führe den Code aus unterhalb des nächsten Schrittes aus.
+
+4.  Beschreibe Zeile für Zeile mit deinen eigenen Worten was der folgende Code macht.
+
+Schreibe hier deinen Text:
+
+```{r}
+gapminder_summary_lifeExp <- gapminder |> 
+  group_by(continent, year) |> 
+  summarise(lifeExp = median(lifeExp)) 
+```
+
+5.  Öffne den Reiter "Environment" im Fenster oben rechts. Dort sind zwei Daten Objekte abgespeichert. Klicke auf den jeweiligen Namen und schau dir die Daten an.
+
+## Aufgabe 3: Erstelle eine Zeitreihendiagramm
+
+1.  Unten wurde bereits ein Codeblock für dich erstellt.
+
+2.  Verwende die Funktion `ggplot()` und das Objekt `gapminder_summary_lifeExpr`, um ein verbundenes Streudiagramm (auch Zeitreihendiagramm genannt) mit den Funktionen `geom_line()` und `geom_point()` mit den folgenden visuellen Eigenschaften zu erstellen:
+
+-   Jahr (Variable: year) auf der x-Achse;
+-   Lebenserwartung (Variable: lifeExp) auf der y-Achse;
+-   Kontinent zur Einfärbung mit dem Argument `color = continent` innerhalb von `aes()`
+
+3.  Führe den Code aus.
+
+```{r}
+
+
+```
+
+## Aufgabe 4: Erstelle ein Balkendiagramm
+
+### mit `geom_col()`
+
+1.  Unten wurde bereits ein Codeblock für dich erstellt.
+
+2.  Verwende die Funktion `ggplot()` und das Objekt `gapminder_summary_lifeExp_2007`, um ein Balkendiagramm mit der Funktion `geom_col()` mit den folgenden visuellen Eigenschaften zu erstellen:
+
+-   continent auf der x-Achse;
+-   count auf der y-Achse;
+
+3.  Führe den Code aus.
+
+```{r}
+
+
+```
+
+### with `geom_bar()`
+
+1.  Unten wurde bereits ein Codeblock für dich erstellt.
+
+2.  Verwende die Funktion `ggplot()` und das Objekt `gapminder_2007`, um ein Balkendiagramm mit der Funktion `geom_bar()` mit den folgenden visuellen Eigenschaften zu erstellen:
+
+-   continent auf die x-Achse;
+
+3.  Führe den Code aus.
+
+4.  Das Diagramm ist identisch mit dem Diagramm, welches mit `geom_col()` erstellt wurde. Warum? Was macht die Funktion `geom_bar()`?
+
+Schreibe hier deinen Text:
+
+```{r}
+
+
+```
+
+## Aufgabe 5: Erstelle ein Histogramm
+
+1.  Unten wurde bereits ein Codeblock für dich erstellt.
+
+2.  Verwende die Funktion `ggplot()` und das Objekt `gapminder_2007`, um ein Histogramm mit der Funktion `geom_histogram()` mit den folgenden visuellen Eigenschaften zu erstellen:
+
+-   Lebenserwartung (Variable: lifeExp) auf der y-Achse;
+-   Kontinent zur Einfärbung mit dem Argument `fill = continent` innerhalb von `aes()`
+
+3.  Führe den Code aus.
+
+4.  Füge in der Funktion `geom_histogram()` die folgenden Argumente und Werte hinzu:
+
+-   `col = "grey30"`
+-   `breaks = seq(40, 85, 2.5)`
+
+5.  Führe den Code aus.
+
+6.  Beschreibe, inwiefern die Funktion `geom_histogram()` ähnlich ist wie die Funktion `geom_bar()`. Was ist unterschiedlich?
+
+7.  Was passiert, wenn das Argument `breaks` hinzugefügt wird? Spiele mit den Zahlen innerhalb von `seq()`, um zu sehen, was sich ändert.
+
+Beschreibe hier, was du beobachtest:
+
+```{r}
+
+
+```
+
+## Aufgabe 6: Streudiagramm und Facettierung
+
+1.  Unten wurde bereits ein Codeblock für dich erstellt.
+
+2.  Verwende die Funktion `ggplot()` und weise `gapminder_2007` zu und erstelle ein Streudiagramm mit der Funktion `geom_point()` mit den folgenden visuellen Eigenschaften zu erstellen:
+
+-   gdpPercap auf die x-Achse;
+-   lifeExp to auf die y-Achse;
+-   population auf das Argument `size`;
+-   country für Farben mit dem `color = country` Argument und Wert innerhalb von `aes()`
+
+4.  Führe den Code aus.
+
+5.  Verwende die Variable continent um dem Diagramm Facetten hinzuzufügen, indem du `facet_wrap(~continent)` hinzufügst.
+
+6.  Editiere `geom_point()`, um die Legende zu entfernen: `geom_point(show.legend = FALSE)`
+
+7.  Führe den Code aus.
+
+```{r}
+
+
+  
+```
+
+## Aufgabe 7: Erstelle ein Liniendiagramm und verwende Facetten
+
+1.  Ein Codeblock mit vollständigem Code wurde bereits vorbereitet.
+
+2.  Führe den Code aus.
+
+3.  Entferne das `#` Zeichen in der Zeile, die mit der Funktion `scale_color_manual()` beginnt.
+
+4.  Was ist in dem `country_colors` Objekt gespeichert? Finde es heraus, indem du das Objekt in der Console ausführst (tippe es in die Console und drücke Enter). Mache das gleiche noch einmal, aber mit einem Fragezeichen `?country_colors`.
+
+5.  Neben der Codeblock-Option `#| eval:` ändere den Wert von `false` auf `true`.
+
+```{r}
+#| eval: false
+
+ggplot(data = gapminder,
+       mapping = aes(x = year, 
+                     y = lifeExp, 
+                     group = country, 
+                     color = country)) +
+  geom_line(lwd = 1, show.legend = FALSE) + 
+  facet_wrap(~continent) +
+  # scale_color_manual(values = country_colors) +
+  theme_minimal() 
+
+```
+
+## Aufgabe 8: Daten kommunizieren
+
+1.  Das Dokument in das HTML-Format umwandeln (Render) und eventuelle Fehler beheben.
+
+2.  Kehre nun zurück zur Kurswebseite und folge den Schritten um deine lokalen Veränderung mit GitHub zu syncronisieren.
