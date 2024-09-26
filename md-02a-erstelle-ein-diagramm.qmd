@@ -10,7 +10,7 @@ editor_options:
 
 ## Aufgabe 1: R-Pakete laden & Daten importieren
 
-Die erforderlichen Pakete für diese Hausaufgabe wurden bereits hinzugefügt. Führe den folgenden Codeblock aus, um die erforderlichen Pakete zu laden. **Tipp:** Klicke auf die grüne Wiedergabetaste in der oberen rechten Ecke des Codeblock.
+Die erforderlichen Pakete für diese Zusatzaufgabe wurden bereits hinzugefügt. Führe den folgenden Codeblock aus, um die erforderlichen Pakete zu laden. **Tipp:** Klicke auf die grüne Wiedergabetaste in der oberen rechten Ecke des Codeblock.
 
 ```{r}
 library(gapminder)
@@ -45,7 +45,7 @@ gapminder_2007 <- ___ |>
   ___(year == 2007) 
 ```
 
-## Aufgabe 3: Erstellen eines Boxplots
+## Aufgabe 3: Erstellen einen Boxplot
 
 Dies ist eine typische Aufgabe ohne Anfangscode.
 
@@ -53,17 +53,23 @@ Dies ist eine typische Aufgabe ohne Anfangscode.
 
 2.  Verwende die Funktion `ggplot()` und das Objekt `gapminder_2007`, um einen Boxplot mit den folgenden visuellen Eigenschaften zu erstellen:
 
-    -   Kontinent auf der x-Achse
-
-    -   Lebenserwartung auf der y-Achse
-
-    -   Kontinent als Farbe mit dem Argument `fill = continent` innerhalb von `aes()`
+-   Kontinent (Variable: continent) auf der x-Achse
+-   Lebenserwartung (Variable: lifeExp) auf der y-Achse
+-   Kontinent als Farbe mit dem Argument `fill = continent` innerhalb von `aes()`
 
 3.  Führe den im Codeblock enthaltenen Code aus und behebe alle Fehler.
 
-4.  Was sind die Datentypen der drei Variablen, die für ästhetische Zuordnungen verwendet werden?
+4. Die Ausreißer in der Grafik nicht anzeigen (ignorieren). **Hinweis: Verwende eine Suchmaschine oder ein KI-Tool, um die Lösung zu finden.**
+
+5.  Führe den im Codeblock enthaltenen Code aus und behebe alle Fehler.
 
 ```{r}
 
 
 ```
+
+## Aufgabe 4: Daten kommunizieren
+
+1. Das Dokument in das HTML-Format umwandeln (Render) und eventuelle Fehler beheben.
+
+2. Kehre nun zurück zur Kurswebseite und folge den Schritten um deine lokalen Veränderung mit GitHub zu syncronisieren.

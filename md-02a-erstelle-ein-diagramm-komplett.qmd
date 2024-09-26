@@ -53,11 +53,9 @@ Dies ist eine typische Aufgabe ohne Anfangscode.
 
 2.  Verwende die Funktion `ggplot()` und das Objekt `gapminder_2007`, um einen Boxplot mit den folgenden visuellen Eigenschaften zu erstellen:
 
-    -   Kontinent auf der x-Achse
-
-    -   Lebenserwartung auf der y-Achse
-
-    -   Kontinent als Farbe mit dem Argument `fill = continent` innerhalb von `aes()`
+-   Kontinent (Variable: continent) auf der x-Achse
+-   Lebenserwartung (Variable: lifeExp) auf der y-Achse
+-   Kontinent als Farbe mit dem Argument `fill = continent` innerhalb von `aes()`
 
 3.  Führe den im Codeblock enthaltenen Code aus und behebe alle Fehler.
 
@@ -70,3 +68,10 @@ ggplot(data = gapminder_2007,
                      fill = continent)) +
   geom_boxplot()
 ```
+
+
+## Aufgabe 4: Daten kommunizieren
+
+1. Das Dokument in das HTML-Format umwandeln (Render) und eventuelle Fehler beheben.
+
+2. Kehre nun zurück zur Kurswebseite und folge den Schritten um deine lokalen Veränderung mit GitHub zu syncronisieren.
