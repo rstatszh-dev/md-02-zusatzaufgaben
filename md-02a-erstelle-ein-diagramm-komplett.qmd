@@ -1,0 +1,72 @@
+---
+title: "Erstelle ein Diagramm"
+format:
+  html:
+    embed-resources: true
+editor: visual
+editor_options: 
+  chunk_output_type: console
+---
+
+## Aufgabe 1: R-Pakete laden & Daten importieren
+
+Die erforderlichen Pakete für diese Hausaufgabe wurden bereits hinzugefügt. Führe den folgenden Codeblock aus, um die erforderlichen Pakete zu laden. **Tipp:** Klicke auf die grüne Wiedergabetaste in der oberen rechten Ecke des Codeblock.
+
+```{r}
+library(gapminder)
+library(ggplot2)
+library(dplyr)
+```
+
+## Aufgabe 2: Transform for data in 2007
+
+Folgend ist eine typische Aufgabenbeschreibung, wie du sie in den Übungen und Zusatzaufgaben findest. Bei Aufgaben vom Typ „Lückentext“ solltest du die Unterstriche \_\_\_ durch den beschriebenen Code ersetzen und dann den Wert der Codeblock-Option `#| eval:` von `false` auf `true` ändern. Bei anderen Aufgaben erstellst du deinen eigenen Code von Grund auf neu. Mit der Zeit werden die Aufgabenbeschreibungen weniger detailliert.
+
+**Füll die Lücken**
+
+1.  Unten wurde bereits ein Codeblock für dich erstellt.
+
+2.  Beginne mit dem gapminder Objekt und füge den Pipe-Operator am Ende der Zeile hinzu.
+
+3.  Verwende in einer neuen Zeile die Funktion `filter()`, um die Daten für die Beobachtungen des Jahres 2007 einzugrenzen.
+
+4.  Verwende den Zuweisungsoperator, um die Daten einem Objekt namens `gapminder_2007` zuzuweisen.
+
+5.  Führe den im Codeblock enthaltenen Code aus und behebe alle Fehler.
+
+6.  Ändere neben der Codeblock-Option `#| eval:` den Wert von `false` auf `true`.
+
+7.  Wandel das Dokument in das HTML-Format um (klick: Render) und behebe eventuelle Fehler.
+
+```{r}
+#| eval: true
+ 
+gapminder_2007 <- gapminder |> 
+  filter(year == 2007) 
+```
+
+## Aufgabe 3: Erstellen eines Boxplots
+
+Dies ist eine typische Aufgabe ohne Anfangscode.
+
+1.  Unten wurde bereits ein Codeblock für dich erstellt.
+
+2.  Verwende die Funktion `ggplot()` und das Objekt `gapminder_2007`, um einen Boxplot mit den folgenden visuellen Eigenschaften zu erstellen:
+
+    -   Kontinent auf der x-Achse
+
+    -   Lebenserwartung auf der y-Achse
+
+    -   Kontinent als Farbe mit dem Argument `fill = continent` innerhalb von `aes()`
+
+3.  Führe den im Codeblock enthaltenen Code aus und behebe alle Fehler.
+
+4.  Was sind die Datentypen der drei Variablen, die für ästhetische Zuordnungen verwendet werden?
+
+```{r}
+ggplot(data = gapminder_2007,
+       mapping = aes(x = continent,
+                     y = lifeExp,
+                     fill = continent)) +
+  geom_boxplot()
+```
