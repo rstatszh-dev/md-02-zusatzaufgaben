@@ -59,7 +59,7 @@ Dies ist eine typische Aufgabe ohne Anfangscode.
 
 3.  Führe den im Codeblock enthaltenen Code aus und behebe alle Fehler.
 
-4. Die Ausreißer in der Grafik nicht anzeigen (ignorieren). **Hinweis: Verwende eine Suchmaschine oder ein KI-Tool, um die Lösung zu finden.**
+4.  Die Ausreißer in der Grafik nicht anzeigen (ignorieren). **Hinweis: Verwende eine Suchmaschine oder ein KI-Tool, um die Lösung zu finden.**
 
 5.  Führe den im Codeblock enthaltenen Code aus und behebe alle Fehler.
 
@@ -70,6 +70,6 @@ Dies ist eine typische Aufgabe ohne Anfangscode.
 
 ## Aufgabe 4: Daten kommunizieren
 
-1. Das Dokument in das HTML-Format umwandeln (Render) und eventuelle Fehler beheben.
+1.  Das Dokument in das HTML-Format umwandeln (Render) und eventuelle Fehler beheben.
 
-2. Kehre nun zurück zur Kurswebseite und folge den Schritten um deine lokalen Veränderung mit GitHub zu syncronisieren.
+2.  Kehre nun zurück zur Kurswebseite und folge den Schritten um deine lokalen Veränderung mit GitHub zu syncronisieren.

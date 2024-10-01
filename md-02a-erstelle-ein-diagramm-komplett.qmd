@@ -69,9 +69,8 @@ ggplot(data = gapminder_2007,
   geom_boxplot()
 ```
 
-
 ## Aufgabe 4: Daten kommunizieren
 
-1. Das Dokument in das HTML-Format umwandeln (Render) und eventuelle Fehler beheben.
+1.  Das Dokument in das HTML-Format umwandeln (Render) und eventuelle Fehler beheben.
 
-2. Kehre nun zurück zur Kurswebseite und folge den Schritten um deine lokalen Veränderung mit GitHub zu syncronisieren.
+2.  Kehre nun zurück zur Kurswebseite und folge den Schritten um deine lokalen Veränderung mit GitHub zu syncronisieren.
