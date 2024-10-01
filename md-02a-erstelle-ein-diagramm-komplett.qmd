@@ -32,11 +32,13 @@ Folgend ist eine typische Aufgabenbeschreibung, wie du sie in den Übungen und Z
 
 4.  Verwende den Zuweisungsoperator, um die Daten einem Objekt namens `gapminder_2007` zuzuweisen.
 
-5.  Führe den im Codeblock enthaltenen Code aus und behebe alle Fehler.
+5.  Führe den im Codeblock enthaltenen Code aus und behebe alle Fehler. **Tipp:** Klicke auf die grüne Wiedergabetaste in der oberen rechten Ecke des Codeblock.
 
-6.  Ändere neben der Codeblock-Option `#| eval:` den Wert von `false` auf `true`.
+6.  Im Fenster oben rechts, öffne den Reiter "Environment". Klicke auf `gapminder_2007`. Das erstellte Daten Objekt öffnet sich in einem Reiter im Fenster oben links. Betrachte die Daten.
 
-7.  Wandel das Dokument in das HTML-Format um (klick: Render) und behebe eventuelle Fehler.
+7.  Ändere neben der Codeblock-Option `#| eval:` den Wert von `false` auf `true`.
+
+8.  Wandel das Dokument in das HTML-Format um (klick: Render) und behebe eventuelle Fehler.
 
 ```{r}
 #| eval: true
@@ -51,7 +53,7 @@ Dies ist eine typische Aufgabe ohne Anfangscode.
 
 1.  Unten wurde bereits ein Codeblock für dich erstellt.
 
-2.  Verwende die Funktion `ggplot()` und das Objekt `gapminder_2007`, um einen Boxplot mit den folgenden visuellen Eigenschaften zu erstellen:
+2.  Verwende die Funktion `ggplot()` und das Daten Objekt `gapminder_2007`, um einen Boxplot mit den folgenden visuellen Eigenschaften zu erstellen:
 
 -   Kontinent (Variable: continent) auf der x-Achse
 -   Lebenserwartung (Variable: lifeExp) auf der y-Achse
@@ -59,7 +61,11 @@ Dies ist eine typische Aufgabe ohne Anfangscode.
 
 3.  Führe den im Codeblock enthaltenen Code aus und behebe alle Fehler.
 
-4.  Was sind die Datentypen der drei Variablen, die für ästhetische Zuordnungen verwendet werden?
+4.  Die Ausreißer in der Grafik nicht anzeigen (ignorieren). **Hinweis: Verwende eine Suchmaschine oder ein KI-Werkzeug, um die Lösung zu finden.**
+
+5.  Führe den im Codeblock enthaltenen Code aus und behebe alle Fehler.
+
+6.  Was sind die Datentypen der drei Variablen, die für die Zuordnungen visueller Eigenschaften verwendet werden?
 
 ```{r}
 ggplot(data = gapminder_2007,

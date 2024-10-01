@@ -16,6 +16,8 @@ In dieser Zusatzaufgabe arbeiten wir mit den gleichen Daten wie in den Aufgaben 
 
 2.  Lade die gleichen R Pakete wie in `md-02a-erstelle-ein-diagramm.qmd`.
 
+3.  Führe den im Codeblock enthaltenen Code aus.
+
 ```{r}
 library(gapminder)
 library(ggplot2)
@@ -45,7 +47,7 @@ gapminder_summary_lifeExp_2007 <- gapminder_2007 |>
         )
 ```
 
-3.  Führe den Code aus.
+3.  Führe den Code unterhalb des nächsten Schrittes aus.
 
 4.  Beschreibe Zeile für Zeile mit deinen eigenen Worten was der folgende Code macht.
 
@@ -57,13 +59,13 @@ gapminder_summary_lifeExp <- gapminder |>
   summarise(lifeExp = median(lifeExp)) 
 ```
 
-5.  Öffne den Reiter "Environment" im Fenster oben rechts. Dort sind zwei Daten Objekte abgespeichert. Klicke auf den jeweiligen Namen und schau dir die Daten an.
+5.  Öffne den Reiter "Environment" im Fenster oben rechts. Dort sind drei Daten Objekte abgespeichert. Klicke auf den jeweiligen Namen und schau dir die Daten an.
 
 ## Aufgabe 3: Erstelle eine Zeitreihendiagramm
 
 1.  Unten wurde bereits ein Codeblock für dich erstellt.
 
-2.  Verwende die Funktion `ggplot()` und das Objekt `gapminder_summary_lifeExpr`, um ein verbundenes Streudiagramm (auch Zeitreihendiagramm genannt) mit den Funktionen `geom_line()` und `geom_point()` mit den folgenden visuellen Eigenschaften zu erstellen:
+2.  Verwende die Funktion `ggplot()` und das Daten Objekt `gapminder_summary_lifeExp`, um ein verbundenes Streudiagramm (auch Zeitreihendiagramm genannt) zu erstellen. Nutze dazu die Funktionen `geom_line()` und `geom_point()` mit den folgenden visuellen Eigenschaften:
 
 -   Jahr (Variable: year) auf der x-Achse;
 -   Lebenserwartung (Variable: lifeExp) auf der y-Achse;
@@ -128,7 +130,7 @@ ggplot(data = gapminder_2007,
 
 2.  Verwende die Funktion \`ggplot()\` und das Objekt \`gapminder_2007\`, um ein Histogramm mit der Funktion \`geom_histogram()\` mit den folgenden visuellen Eigenschaften zu erstellen:
 
--   Lebenserwartung (Variable: lifeExp) auf der y-Achse;
+-   Lebenserwartung (Variable: lifeExp) auf der x-Achse;
 -   Kontinent zur Einfärbung mit dem Argument `fill = continent` innerhalb von `aes()`
 
 3.  Führe den Code aus.
@@ -140,7 +142,7 @@ ggplot(data = gapminder_2007,
 
 5.  Führe den Code aus.
 
-6.  Beschreibe, inwiefern die Funktion \`geom_histogram()\` ähnlich ist wie die Funktion `geom_bar()`. Was ist unterschiedlich?
+6.  Beschreibe, inwiefern die Funktion `geom_histogram()` ähnlich ist wie die Funktion `geom_bar()`. Was ist unterschiedlich?
 
 7.  Was passiert, wenn das Argument `breaks` hinzugefügt wird? Spiele mit den Zahlen innerhalb von `seq()`, um zu sehen, was sich ändert.
 
@@ -159,11 +161,11 @@ ggplot(data = gapminder_2007,
 
 1.  Unten wurde bereits ein Codeblock für dich erstellt.
 
-2.  Verwende die Funktion \`ggplot()\` und weise \`gapminder_2007\` zu und erstelle ein Streudiagramm mit der Funktion \`geom_point()\` mit den folgenden visuellen Eigenschaften zu erstellen:
+2.  Verwende die Funktion `ggplot()` und das Objekt `gapminder_2007`, um ein Streudiagramm mit der Funktion `geom_point()` mit den folgenden visuellen Eigenschaften zu erstellen:
 
 -   gdpPercap auf die x-Achse;
 -   lifeExp to auf die y-Achse;
--   population auf das Argument `size`;
+-   pop auf das Argument `size`;
 -   country für Farben mit dem `color = country` Argument und Wert innerhalb von `aes()`
 
 4.  Führe den Code aus.
@@ -194,9 +196,11 @@ ggplot(data = gapminder_2007,
 
 3.  Entferne das `#` Zeichen in der Zeile, die mit der Funktion `scale_color_manual()` beginnt.
 
-4.  Was ist in dem `country_colors` Objekt gespeichert? Finde es heraus, indem du das Objekt in der Console ausführst (tippe es in die Console und drücke Enter). Mache das gleiche noch einmal, aber mit einem Fragezeichen `?country_colors`.
+4.  Führe den Code aus.
 
-5.  Neben der Codeblock-Option `#| eval:` ändere den Wert von `false` auf `true`.
+5.  Was ist in dem `country_colors` Objekt gespeichert? Finde es heraus, indem du das Objekt in der Console ausführst (tippe es in die Console und drücke Enter). Mache das gleiche noch einmal, aber mit einem Fragezeichen `?country_colors`.
+
+6.  Neben der Codeblock-Option `#| eval:` ändere den Wert von `false` auf `true`.
 
 ```{r}
 #| eval: true
