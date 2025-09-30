@@ -1,22 +1,19 @@
 ---
 title: "Daten zusammenfassen und visualisieren"
+author: "Dein Name hier"
 format:
   html:
     embed-resources: true
 editor: visual
-editor_options: 
+execute:
+  warning: false
+editor_options:
   chunk_output_type: console
 ---
 
-## Aufgabe 1: R-Pakete laden & Daten importieren
+## Aufgabe 1: R-Pakete laden
 
-In dieser Zusatzaufgabe arbeiten wir mit den gleichen Daten wie in den Aufgaben aus `md-02a-erstelle-ein-diagramm.qmd`. Dieses Mal sollts du den Code jedoch selbst schreiben.
-
-1.  Unten wurde bereits ein Codeblock für dich erstellt.
-
-2.  Lade die gleichen R Pakete wie in `md-02a-erstelle-ein-diagramm.qmd`.
-
-3.  Führe den im Codeblock enthaltenen Code aus.
+1.  Führe den Codeblock unten aus, um die erforderlichen Pakete zu laden.
 
 ```{r}
 library(gapminder)
@@ -24,99 +21,130 @@ library(ggplot2)
 library(dplyr)
 ```
 
-## Aufgabe 2: Daten transformieren - Eingrenzen & Zusammenfassen
+## Aufgabe 2: Daten für die Visualisierung erstellen
 
-Der Code für diese Aufgabe ist bereits vorbereitet. Ein kleiner Teil ist gleich wie in `md-02a-erstelle-ein-diagramm.qmd`, jedoch wurde der Code hier noch erweitert um die Daten zusammenzufassen. Mit diesen Funktionen werden wir uns nächste Woche beschäftigen.
+1.  Führe die drei Codeblöcke unten aus, um die für die Visualisierungsaufgaben benötigten Datenobjekte zu erstellen.
 
-1.  Führe den Code aus.
-
-2.  Beschreibe Zeile für Zeile mit deinen eigenen Worten was der folgende Code macht.
-
-Schreibe hier deinen Text:
+2.  Überprüfe im Environment-Fenster, dass die drei Objekte korrekt erstellt wurden.
 
 ```{r}
-
 gapminder_2007 <- gapminder |>
-    filter(year == 2007)
-
-gapminder_summary_lifeExp_2007 <- gapminder_2007 |>
-    group_by(continent) |> 
-    summarise(
-        count = n(),
-        lifeExp = median(lifeExp)
-        )
+  filter(year == 2007)
 ```
 
-3.  Führe den Code unterhalb des nächsten Schrittes aus.
-
-4.  Beschreibe Zeile für Zeile mit deinen eigenen Worten was der folgende Code macht.
-
-Schreibe hier deinen Text:
-
 ```{r}
-gapminder_summary_lifeExp <- gapminder |> 
-  group_by(continent, year) |> 
-  summarise(lifeExp = median(lifeExp)) 
+gapminder_zusammenfassung_2007 <- gapminder_2007 |>
+  group_by(continent) |>
+  summarise(
+    anzahl = n(),
+    lebenserwartung = median(lifeExp)
+  )
 ```
 
-5.  Öffne den Reiter "Environment" im Fenster oben rechts. Dort sind drei Daten Objekte abgespeichert. Klicke auf den jeweiligen Namen und schau dir die Daten an.
+```{r}
+gapminder_zusammenfassung_kontinent_jahr <- gapminder |>
+  group_by(continent, year) |>
+  summarise(lebenserwartung = median(lifeExp))
+```
 
-## Aufgabe 3: Erstelle eine Zeitreihendiagramm
+## Aufgabe 3: Erstelle einen Boxplot
 
-1.  Unten wurde bereits ein Codeblock für dich erstellt.
+Schreibe Code, um einen Boxplot zu erstellen, der die Lebenserwartung nach Kontinent zeigt.
 
-2.  Verwende die Funktion `ggplot()` und das Daten Objekt `gapminder_summary_lifeExp`, um ein verbundenes Streudiagramm (auch Zeitreihendiagramm genannt) zu erstellen. Nutze dazu die Funktionen `geom_line()` und `geom_point()` mit den folgenden visuellen Eigenschaften:
+1.  Beginne mit: `ggplot(data = gapminder_2007)`, um das `gapminder_2007` Objekt als Daten für den Plot zu verwenden.
 
--   Jahr (Variable: year) auf der x-Achse;
--   Lebenserwartung (Variable: lifeExp) auf der y-Achse;
--   Kontinent zur Einfärbung mit dem Argument `color = continent` innerhalb von `aes()`
+2.  Füge dann nach `gapminder_2007` ein Komma hinzu und füge die Funktion `mapping = aes()` hinzu.
 
-3.  Führe den Code aus.
+3.  Innerhalb von `aes()` füge die folgenden visuellen Zuordnungen hinzu:
+
+-   Kontinent auf die x-Achse; (beachte was er Spaltenname im Datensatz ist)
+-   Lebenserwartung auf die y-Achse; (beachte was er Spaltenname im Datensatz ist)
+
+4.  Füge ein `+` am Ende der Zeile hinzu, dann füge in einer neuen Zeile hinzu: `geom_boxplot()`
+
+5.  Führe den Code aus und überprüfe, dass du 5 Boxen siehst.
 
 ```{r}
+ggplot(data = gapminder_2007,
+       mapping = aes(x = continent,
+                     y = lifeExp)) +
+  geom_boxplot()
+```
 
-ggplot(data = gapminder_summary_lifeExp,
+## Aufgabe 4: Erstelle ein Zeitreihendiagramm
+
+Schreibe Code, um ein Zeitreihendiagramm zu erstellen, das zeigt, wie sich die mittlere Lebenserwartung im Laufe der Zeit für jeden Kontinent verändert hat.
+
+1.  Beginne mit: `ggplot(data = gapminder_zusammenfassung_kontinent_jahr)`, um das `gapminder_zusammenfassung_kontinent_jahr` Objekt als Daten für den Plot zu verwenden.
+
+2.  Füge dann nach `gapminder_zusammenfassung_kontinent_jahr` ein Komma hinzu und füge die Funktion `mapping = aes()` hinzu.
+
+3.  Innerhalb von `aes()` füge die folgenden visuellen Zuordnungen hinzu:
+
+-   Jahr auf die x-Achse;
+-   Lebenserwartung auf die y-Achse;
+-   Kontinent zur Farbe mit dem Argument `color = continent`
+
+4.  Füge ein `+` am Ende der Zeile hinzu, dann füge in einer neuen Zeile hinzu: `geom_line()`
+
+5.  Füge ein weiteres `+` am Ende der Zeile hinzu, dann füge in einer neuen Zeile hinzu: `geom_point()`
+
+6.  Führe den Code aus und überprüfe, dass du 5 farbige Linien mit Punkten siehst, die Trends über die Zeit zeigen.
+
+```{r}
+ggplot(data = gapminder_zusammenfassung_kontinent_jahr,
        mapping = aes(x = year,
-                     y = lifeExp,
+                     y = lebenserwartung,
                      color = continent)) +
   geom_line() +
-  geom_point() 
-
+  geom_point()
 ```
 
-## Aufgabe 4: Erstelle ein Balkendiagramm
+## Aufgabe 5: Erstelle ein Balkendiagramm
 
 ### mit `geom_col()`
 
-1.  Unten wurde bereits ein Codeblock für dich erstellt.
+Schreibe Code, um ein Balkendiagramm zu erstellen, das die Anzahl der Länder pro Kontinent zeigt.
 
-2.  Verwende die Funktion `ggplot()` und das Objekt `gapminder_summary_lifeExp_2007`, um ein Balkendiagramm mit der Funktion `geom_col()` mit den folgenden visuellen Eigenschaften zu erstellen:
+1.  Beginne mit: `ggplot(data = gapminder_zusammenfassung_2007)`, um das `gapminder_zusammenfassung_2007` Objekt als Daten für den Plot zu verwenden.
 
--   continent auf der x-Achse;
--   count auf der y-Achse;
+2.  Füge dann nach `gapminder_zusammenfassung_2007` ein Komma hinzu und füge die Funktion `mapping = aes()` hinzu.
 
-3.  Führe den Code aus.
+3.  Innerhalb von `aes()` füge die folgenden visuellen Zuordnungen hinzu:
+
+-   Kontinent auf die x-Achse;
+-   Anzahl auf die y-Achse;
+
+4.  Füge ein `+` am Ende der Zeile hinzu, dann füge in einer neuen Zeile hinzu: `geom_col()`
+
+5.  Führe den Code aus und überprüfe, dass du 5 Balken siehst, die die Anzahl pro Kontinent zeigen.
 
 ```{r}
-ggplot(data = gapminder_summary_lifeExp_2007,
+ggplot(data = gapminder_zusammenfassung_2007,
        mapping = aes(x = continent,
-                     y = count)) +
+                     y = anzahl)) +
   geom_col()
 ```
 
-### with `geom_bar()`
+### mit `geom_bar()`
 
-1.  Unten wurde bereits ein Codeblock für dich erstellt.
+Schreibe Code, um das gleiche Balkendiagramm zu erstellen, aber verwende `geom_bar()` stattdessen.
 
-2.  Verwende die Funktion `ggplot()` und das Objekt `gapminder_2007`, um ein Balkendiagramm mit der Funktion `geom_bar()` mit den folgenden visuellen Eigenschaften zu erstellen:
+1.  Beginne mit: `ggplot(data = gapminder_2007)`, um das `gapminder_2007` Objekt als Daten für den Plot zu verwenden.
 
--   continent auf die x-Achse;
+2.  Füge dann nach `gapminder_2007` ein Komma hinzu und füge die Funktion `mapping = aes()` hinzu.
 
-3.  Führe den Code aus.
+3.  Innerhalb von `aes()` füge die folgende visuelle Zuordnung hinzu:
 
-4.  Das Diagramm ist identisch mit dem Diagramm, welches mit `geom_col()` erstellt wurde. Warum? Was macht die Funktion `geom_bar()`?
+-   Kontinent auf die x-Achse;
 
-Schreibe hier deinen Text:
+4.  Füge ein `+` am Ende der Zeile hinzu, dann füge in einer neuen Zeile hinzu: `geom_bar()`
+
+5.  Führe den Code aus und bemerke, dass der Plot identisch mit dem ist, der mit `geom_col()` erstellt wurde.
+
+6.  Überlege: Was macht `geom_bar()` anders als `geom_col()`? Schreibe deine Antwort hier:
+
+*`geom_bar()` zählt automatisch die Anzahl der Beobachtungen in jeder Kategorie, während `geom_col()` einen bereits berechneten Wert verwendet.*
 
 ```{r}
 ggplot(data = gapminder_2007,
@@ -124,101 +152,82 @@ ggplot(data = gapminder_2007,
   geom_bar()
 ```
 
-## Aufgabe 5: Erstelle ein Histogramm
+## Aufgabe 6: Erstelle ein Histogramm
 
-1.  Unten wurde bereits ein Codeblock für dich erstellt.
+Schreibe Code, um ein Histogramm zu erstellen, das die Verteilung der Lebenserwartung zeigt, farblich nach Kontinent getrennt.
 
-2.  Verwende die Funktion \`ggplot()\` und das Objekt \`gapminder_2007\`, um ein Histogramm mit der Funktion \`geom_histogram()\` mit den folgenden visuellen Eigenschaften zu erstellen:
+1.  Beginne mit: `ggplot(data = gapminder_2007)`, um das `gapminder_2007` Objekt als Daten für den Plot zu verwenden.
 
--   Lebenserwartung (Variable: lifeExp) auf der x-Achse;
--   Kontinent zur Einfärbung mit dem Argument `fill = continent` innerhalb von `aes()`
+2.  Füge dann nach `gapminder_2007` ein Komma hinzu und füge die Funktion `mapping = aes()` hinzu.
 
-3.  Führe den Code aus.
+3.  Innerhalb von `aes()` füge die folgenden visuellen Zuordnungen hinzu:
 
-4.  Füge in der Funktion \`geom_histogram()\` die folgenden Argumente und Werte hinzu:
+-   Lebenserwartung auf die x-Achse;
+-   Kontinent zur Füllung mit dem Argument `fill = continent`
 
--   `col = "grey30"`
--   `breaks = seq(40, 85, 2.5)`
+4.  Füge ein `+` am Ende der Zeile hinzu, dann füge in einer neuen Zeile hinzu: `geom_histogram()`
 
-5.  Führe den Code aus.
+5.  Führe den Code aus und beobachte das gestapelte Histogramm.
 
-6.  Beschreibe, inwiefern die Funktion `geom_histogram()` ähnlich ist wie die Funktion `geom_bar()`. Was ist unterschiedlich?
+6.  Ändere nun `geom_histogram()`, indem du diese Argumente innerhalb der Klammern hinzufügst:
 
-7.  Was passiert, wenn das Argument `breaks` hinzugefügt wird? Spiele mit den Zahlen innerhalb von `seq()`, um zu sehen, was sich ändert.
+    -   `col = "grey30"` (fügt Ränder zu den Balken hinzu)
+    -   `breaks = seq(40, 85, 2.5)` (steuert die Balkenbreite)
 
-Beschreibe hier, was du beobachtest:
+7.  Experimentiere: Ändere die Zahlen in `seq()` und beschreibe, was passiert:
+
+*Die Zahlen in seq() steuern den Bereich (40 bis 85) und die Balkenbreite (2.5). Kleinere Werte ergeben schmalere Balken, größere Werte ergeben breitere Balken.*
 
 ```{r}
-
 ggplot(data = gapminder_2007,
-       mapping = aes(x = lifeExp, 
+       mapping = aes(x = lifeExp,
                      fill = continent)) +
-  geom_histogram(col = "grey30", breaks = seq(40, 85, 2.5)) 
-
+  geom_histogram(col = "grey30", breaks = seq(40, 85, 2.5))
 ```
 
-## Aufgabe 6: Streudiagramm und Facettierung
+## Aufgabe 7: Streudiagramm und Facettierung
 
-1.  Unten wurde bereits ein Codeblock für dich erstellt.
+Schreibe Code, um ein Streudiagramm zu erstellen, das die Beziehung zwischen BIP pro Kopf und Lebenserwartung zeigt.
 
-2.  Verwende die Funktion `ggplot()` und das Objekt `gapminder_2007`, um ein Streudiagramm mit der Funktion `geom_point()` mit den folgenden visuellen Eigenschaften zu erstellen:
+1.  Beginne mit: `ggplot(data = gapminder_2007)`, um das `gapminder_2007` Objekt als Daten für den Plot zu verwenden.
 
--   gdpPercap auf die x-Achse;
--   lifeExp to auf die y-Achse;
--   pop auf das Argument `size`;
--   country für Farben mit dem `color = country` Argument und Wert innerhalb von `aes()`
+2.  Füge dann nach `gapminder_2007` ein Komma hinzu und füge die Funktion `mapping = aes()` hinzu.
 
-4.  Führe den Code aus.
+3.  Innerhalb von `aes()` füge die folgenden visuellen Zuordnungen hinzu:
 
-5.  Verwende die Variable continent um dem Diagramm Facetten hinzuzufügen, indem du `facet_wrap(~continent)` hinzufügst.
+-   BIP pro Kopf auf die x-Achse;
+-   Lebenserwartung auf die y-Achse;
+-   Bevölkerung auf die Größe;
+-   Land auf die Farbe
 
-6.  Editiere `geom_point()`, um die Legende zu entfernen: `geom_point(show.legend = FALSE)`
+4.  Füge ein `+` am Ende der Zeile hinzu, dann füge in einer neuen Zeile hinzu: `geom_point()`
 
-7.  Führe den Code aus.
+5.  Führe den Code aus und bemerke, dass die Legende mit zu vielen Ländern überwältigend ist.
+
+6.  Ändere `geom_point()`, indem du `show.legend = FALSE` innerhalb der Klammern hinzufügst.
+
+7.  Füge ein weiteres `+` am Ende hinzu, dann füge in einer neuen Zeile hinzu: `facet_wrap(~continent)`, um separate Panels für jeden Kontinent zu erstellen.
+
+8.  Führe den Code aus und überprüfe, dass du 5 Panels mit Streudiagrammen siehst, eines für jeden Kontinent.
 
 ```{r}
-
 ggplot(data = gapminder_2007,
        mapping = aes(x = gdpPercap,
                      y = lifeExp,
                      size = pop,
                      color = country)) +
   geom_point(show.legend = FALSE) +
-  facet_wrap(~continent) 
-  
-```
-
-## Aufgabe 7: Erstelle ein Liniendiagramm und verwende Facetten
-
-1.  Ein Codeblock mit vollständigem Code wurde bereits vorbereitet.
-
-2.  Führe den Code aus.
-
-3.  Entferne das `#` Zeichen in der Zeile, die mit der Funktion `scale_color_manual()` beginnt.
-
-4.  Führe den Code aus.
-
-5.  Was ist in dem `country_colors` Objekt gespeichert? Finde es heraus, indem du das Objekt in der Console ausführst (tippe es in die Console und drücke Enter). Mache das gleiche noch einmal, aber mit einem Fragezeichen `?country_colors`.
-
-6.  Neben der Codeblock-Option `#| eval:` ändere den Wert von `false` auf `true`.
-
-```{r}
-#| eval: true
-
-ggplot(data = gapminder,
-       mapping = aes(x = year, 
-                     y = lifeExp, 
-                     group = country, 
-                     color = country)) +
-  geom_line(lwd = 1, show.legend = FALSE) + 
-  facet_wrap(~continent) +
-  scale_color_manual(values = country_colors) +
-  theme_minimal() 
-
+  facet_wrap(~continent)
 ```
 
 ## Aufgabe 8: Daten kommunizieren
 
-1.  Das Dokument in das HTML-Format umwandeln (Render) und eventuelle Fehler beheben.
+**Im YAML-Header (zwischen den drei Bindestrichen am Anfang des Dokuments)**
 
-2.  Kehre nun zurück zur Kurswebseite und folge den Schritten um deine lokalen Veränderung mit GitHub zu syncronisieren.
+1.  Füge deinen Namen als Autor dieses Dokuments hinzu.
+
+2.  Wandel das Dokument in das HTML-Format um (Render) und behebe eventuelle Fehler.
+
+## Aufgabe 9: Commit & Push & Issue
+
+-   Kehre nun zurück zur Kurswebseite und folge den Schritten um deine lokalen Veränderungen mit GitHub zu synchronisieren.
