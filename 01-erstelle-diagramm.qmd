@@ -150,7 +150,7 @@ Dies ist eine typische Aufgabe ohne Anfangscode.
 
 ```
 
-## Aufgabe 7: Daten kommunizieren
+## Aufgabe 6: Daten kommunizieren
 
 **Im YAML-Header (zwischen den drei Bindestrichen am Anfang des Dokuments)**
 
@@ -158,6 +158,6 @@ Dies ist eine typische Aufgabe ohne Anfangscode.
 
 2.  Wandel das Dokument in das HTML-Format um (Render) und behebe eventuelle Fehler.
 
-## Aufgabe 8: Commit & Push & Issue
+## Aufgabe 7: Commit & Push & Issue
 
 -   Kehre nun zurück zur Kurswebseite und folge den Schritten um deine lokalen Veränderungen mit GitHub zu synchronisieren.
