@@ -1,0 +1,186 @@
+---
+title: "Erstelle ein Diagramm"
+author: "Dein Name hier"
+format:
+  html:
+    embed-resources: true
+editor: visual
+execute:
+  warning: false
+editor_options:
+  chunk_output_type: console
+---
+
+## Aufgabe 1: R-Pakete laden & Daten importieren
+
+Die erforderlichen Pakete für diese Zusatzaufgabe wurden bereits hinzugefügt. Führe den folgenden Codeblock aus, um die erforderlichen Pakete zu laden. **Tipp:** Klicke auf die grüne Wiedergabetaste in der oberen rechten Ecke des Codeblock.
+
+```{r}
+library(gapminder)
+library(ggplot2)
+library(dplyr)
+```
+
+## Aufgabe 2: Daten für das Jahr 2007 filtern
+
+Folgend ist eine typische Aufgabenbeschreibung, wie du sie in den Übungen und Zusatzaufgaben findest. Mit der Zeit werden die Aufgabenbeschreibungen weniger detailliert.
+
+**Lies und verstehe den Code**
+
+1.  Lies den untenstehenden Code laut vor und beschreibe verbal, was jede Zeile macht.
+
+2.  Führe den Codeblock aus.
+
+3.  Beobachte die Ausgabe in der Konsole.
+
+```{r}
+gapminder |>
+  filter(year == 2007)
+```
+
+4.  Schreibe in deinen eigenen Worten, was dieser Code deiner Meinung nach macht:
+
+*Deine Antwort hier:*
+
+5.  Führe nun den untenstehenden Codeblock aus, der das Ergebnis einem Objekt zuweist.
+
+6.  **Tipp:** Beobachte den Reiter "Environment" in RStudio (oberes rechtes Fenster), um das neue Objekt erscheinen zu sehen.
+
+```{r}
+gapminder_2007 <- gapminder |>
+  filter(year == 2007)
+```
+
+7.  Klicke auf `gapminder_2007` im Reiter "Environment", um die Daten anzuzeigen. Was fällt dir an diesem Datensatz im Vergleich zum ursprünglichen `gapminder` Datensatz auf?
+
+*Deine Antwort hier:*
+
+## Aufgabe 3: Daten für Lebenserwartung nach Kontinent zusammenfassen
+
+**Lies und verstehe den Code**
+
+1.  Lies den untenstehenden Code laut vor und beschreibe verbal, was jede Zeile macht.
+
+2.  Führe den Codeblock aus.
+
+3.  Beobachte die Ausgabe in der Konsole.
+
+```{r}
+gapminder_2007 |>
+  group_by(continent) |>
+  summarise(
+    anzahl = n(),
+    lebenserwartung = median(lifeExp)
+  )
+```
+
+4.  Schreibe in deinen eigenen Worten, was dieser Code deiner Meinung nach macht:
+
+*Deine Antwort hier:*
+
+5.  Führe nun den untenstehenden Codeblock aus, der das Ergebnis einem Objekt zuweist.
+
+6.  **Tipp:** Beobachte den Reiter "Environment", um zu sehen, wie sich dieses neue Objekt von `gapminder_2007` unterscheidet.
+
+```{r}
+gapminder_zusammenfassung_2007 <- gapminder_2007 |>
+  group_by(continent) |>
+  summarise(
+    anzahl = n(),
+    lebenserwartung = median(lifeExp)
+  )
+```
+
+7.  Schaue dir das Objekt `gapminder_zusammenfassung_2007` im Reiter "Environment" an. Wie viele Zeilen und Spalten hat es? Warum unterscheidet es sich von `gapminder_2007`?
+
+*Deine Antwort hier:*
+
+## Aufgabe 4: Daten für Lebenserwartung nach Kontinent und Jahr zusammenfassen
+
+**Lies und verstehe den Code**
+
+1.  Lies den untenstehenden Code laut vor und beschreibe verbal, was jede Zeile macht.
+
+2.  Führe den Codeblock aus.
+
+3.  Beobachte die Ausgabe in der Konsole.
+
+```{r}
+gapminder |>
+  group_by(continent, year) |>
+  summarise(lebenserwartung = median(lifeExp))
+```
+
+4.  Schreibe in deinen eigenen Worten, was dieser Code deiner Meinung nach macht:
+
+*Deine Antwort hier:*
+
+5.  Führe nun den untenstehenden Codeblock aus, der das Ergebnis einem Objekt zuweist.
+
+6.  **Tipp:** Beachte, wie der Reiter "Environment" unterschiedliche Informationen für verschiedene Objekttypen anzeigt.
+
+```{r}
+gapminder_zusammenfassung_kontinent_jahr <- gapminder |>
+  group_by(continent, year) |>
+  summarise(lebenserwartung = median(lifeExp))
+```
+
+7.  Vergleiche dieses Ergebnis mit Aufgabe 3. Was ist anders, wenn man nach zwei Variablen statt nach einer gruppiert? Wie beeinflusst das die Ausgabe?
+
+*Deine Antwort hier:*
+
+## Aufgabe 5: Erstelle deinen ersten Plot
+
+Jetzt, da du verstehst, wie man Daten transformiert, lass uns einen Plot erstellen.
+
+1.  Lies den untenstehenden Code laut vor und beschreibe, was er deiner Meinung nach machen wird.
+
+2.  Führe den Codeblock aus.
+
+```{r}
+ggplot(data = gapminder_2007,
+       mapping = aes(x = continent,
+                     y = lifeExp)) +
+  geom_boxplot()
+```
+
+3.  Schreibe in deinen eigenen Worten, was dieser Plot zeigt:
+
+*Deine Antwort hier:*
+
+## Aufgabe 6: Erstelle einen angepassten Boxplot
+
+Dies ist eine typische Aufgabe ohne Anfangscode.
+
+1.  Unten wurde bereits ein Codeblock für dich erstellt.
+
+2.  Verwende die Funktion `ggplot()` und das Daten Objekt `gapminder_2007`, um einen Boxplot mit den folgenden visuellen Eigenschaften zu erstellen:
+
+-   Kontinent (Variable: continent) auf der x-Achse
+-   Lebenserwartung (Variable: lifeExp) auf der y-Achse
+-   Kontinent als Farbe mit dem Argument `fill = continent` innerhalb von `aes()`
+
+3.  Führe den im Codeblock enthaltenen Code aus und behebe alle Fehler.
+
+4.  Die Ausreißer in der Grafik nicht anzeigen (ignorieren). **Hinweis: Verwende eine Suchmaschine oder ein KI-Werkzeug, um die Lösung zu finden.**
+
+5.  Führe den im Codeblock enthaltenen Code aus und behebe alle Fehler.
+
+6.  Was sind die Datentypen der zwei Variablen, die für die Zuordnungen visueller Eigenschaften verwendet werden?
+
+```{r}
+
+
+```
+
+## Aufgabe 7: Daten kommunizieren
+
+**Im YAML-Header (zwischen den drei Bindestrichen am Anfang des Dokuments)**
+
+1.  Füge deinen Namen als Autor dieses Dokuments hinzu.
+
+2.  Wandel das Dokument in das HTML-Format um (Render) und behebe eventuelle Fehler.
+
+## Aufgabe 8: Commit & Push & Issue
+
+-   Kehre nun zurück zur Kurswebseite und folge den Schritten um deine lokalen Veränderungen mit GitHub zu synchronisieren.
