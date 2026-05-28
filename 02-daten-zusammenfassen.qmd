@@ -7,9 +7,16 @@ format:
 editor: visual
 execute:
   warning: false
+  message: false
 editor_options:
   chunk_output_type: console
 ---
+
+::: callout-tip
+## Wenn du nicht weiterkommst
+
+Wenn du an einer Aufgabe mehr als 10 bis 15 Minuten festhängst: öffne die Datei `02-daten-zusammenfassen-komplett.qmd`, vergleiche mit deinem Versuch, und versuche dann zu erklären, *warum* die Lösung funktioniert. Das ist erlaubt und Teil des Lernprozesses.
+:::
 
 ## Aufgabe 1: R-Pakete laden
 
@@ -22,6 +29,8 @@ library(dplyr)
 ```
 
 ## Aufgabe 2: Daten für die Visualisierung erstellen
+
+Die drei Datensätze unten kennst du bereits aus `01-boxplot.qmd`. Versuche, dich an die Funktionen (`filter()`, `group_by()`, `summarise()`) zu erinnern, bevor du den Code ausführst.
 
 1.  Führe die drei Codeblöcke unten aus, um die für die Visualisierungsaufgaben benötigten Datenobjekte zu erstellen.
 
@@ -57,8 +66,8 @@ Schreibe Code, um einen Boxplot zu erstellen, der die Lebenserwartung nach Konti
 
 3.  Innerhalb von `aes()` füge die folgenden visuellen Zuordnungen hinzu:
 
--   Kontinent auf die x-Achse; (beachte was er Spaltenname im Datensatz ist)
--   Lebenserwartung auf die y-Achse; (beachte was er Spaltenname im Datensatz ist)
+- Kontinent auf die x-Achse; (beachte, wie der Spaltenname im Datensatz lautet)
+- Lebenserwartung auf die y-Achse; (beachte, wie der Spaltenname im Datensatz lautet)
 
 4.  Füge ein `+` am Ende der Zeile hinzu, dann füge in einer neuen Zeile hinzu: `geom_boxplot()`
 
@@ -78,9 +87,9 @@ Schreibe Code, um ein Zeitreihendiagramm zu erstellen, das zeigt, wie sich die m
 
 3.  Innerhalb von `aes()` füge die folgenden visuellen Zuordnungen hinzu:
 
--   Jahr auf die x-Achse;
--   Lebenserwartung auf die y-Achse;
--   Kontinent zur Farbe mit dem Argument `color = continent`
+- Jahr auf die x-Achse;
+- Lebenserwartung auf die y-Achse;
+- Kontinent zur Farbe mit dem Argument `color = continent`
 
 4.  Füge ein `+` am Ende der Zeile hinzu, dann füge in einer neuen Zeile hinzu: `geom_line()`
 
@@ -104,8 +113,8 @@ Schreibe Code, um ein Balkendiagramm zu erstellen, das die Anzahl der Länder pr
 
 3.  Innerhalb von `aes()` füge die folgenden visuellen Zuordnungen hinzu:
 
--   Kontinent auf die x-Achse;
--   Anzahl auf die y-Achse;
+- Kontinent auf die x-Achse;
+- Anzahl auf die y-Achse;
 
 4.  Füge ein `+` am Ende der Zeile hinzu, dann füge in einer neuen Zeile hinzu: `geom_col()`
 
@@ -125,7 +134,7 @@ Schreibe Code, um das gleiche Balkendiagramm zu erstellen, aber verwende `geom_b
 
 3.  Innerhalb von `aes()` füge die folgende visuelle Zuordnung hinzu:
 
--   Kontinent auf die x-Achse;
+- Kontinent auf die x-Achse;
 
 4.  Füge ein `+` am Ende der Zeile hinzu, dann füge in einer neuen Zeile hinzu: `geom_bar()`
 
@@ -149,8 +158,8 @@ Schreibe Code, um ein Histogramm zu erstellen, das die Verteilung der Lebenserwa
 
 3.  Innerhalb von `aes()` füge die folgenden visuellen Zuordnungen hinzu:
 
--   Lebenserwartung auf die x-Achse;
--   Kontinent zur Füllung mit dem Argument `fill = continent`
+- Lebenserwartung auf die x-Achse;
+- Kontinent zur Füllung mit dem Argument `fill = continent`
 
 4.  Füge ein `+` am Ende der Zeile hinzu, dann füge in einer neuen Zeile hinzu: `geom_histogram()`
 
@@ -158,8 +167,8 @@ Schreibe Code, um ein Histogramm zu erstellen, das die Verteilung der Lebenserwa
 
 6.  Ändere nun `geom_histogram()`, indem du diese Argumente innerhalb der Klammern hinzufügst:
 
-    -   `col = "grey30"` (fügt Ränder zu den Balken hinzu)
-    -   `breaks = seq(40, 85, 2.5)` (steuert die Balkenbreite)
+    - `col = "grey30"` (fügt Ränder zu den Balken hinzu)
+    - `breaks = seq(40, 85, 2.5)` (steuert die Balkenbreite)
 
 7.  Experimentiere: Ändere die Zahlen in `seq()` und beschreibe, was passiert:
 
@@ -179,14 +188,14 @@ Schreibe Code, um ein Streudiagramm zu erstellen, das die Beziehung zwischen BIP
 
 3.  Innerhalb von `aes()` füge die folgenden visuellen Zuordnungen hinzu:
 
--   BIP pro Kopf auf die x-Achse;
--   Lebenserwartung auf die y-Achse;
--   Bevölkerung auf die Größe;
--   Land auf die Farbe
+- BIP pro Kopf auf die x-Achse;
+- Lebenserwartung auf die y-Achse;
+- Bevölkerung auf die Größe;
+- Land auf die Farbe
 
 4.  Füge ein `+` am Ende der Zeile hinzu, dann füge in einer neuen Zeile hinzu: `geom_point()`
 
-5.  Führe den Code aus und bemerke, dass die Legende mit zu vielen Ländern überwältigend ist.
+5.  Führe den Code aus und bemerke, dass die Legende mit zu vielen Ländern überwältigend ist. Der erste Versuch sieht absichtlich unübersichtlich aus, wir verbessern den Plot in Schritt 6 und 7.
 
 6.  Ändere `geom_point()`, indem du `show.legend = FALSE` innerhalb der Klammern hinzufügst.
 
@@ -198,7 +207,23 @@ Schreibe Code, um ein Streudiagramm zu erstellen, das die Beziehung zwischen BIP
 
 ```
 
-## Aufgabe 8: Daten kommunizieren
+## Aufgabe 8: Optionale Zusatzaufgabe
+
+Diese Aufgabe ist freiwillig. Falls du Lust hast:
+
+1.  Wähle eine Variable (das ist der Name einer Spalte im Datensatz) aus dem `gapminder`-Datensatz, die wir noch nicht visualisiert haben, oder eine Kombination von Variablen, die dich interessiert.
+
+2.  Erstelle einen Plot deiner Wahl. Du kannst eine bekannte Geom-Funktion nutzen oder eine neue aus der [ggplot2-Referenz](https://ggplot2.tidyverse.org/reference/) ausprobieren.
+
+3.  Schreibe in ein bis zwei Sätzen, was dein Plot zeigt und warum du diese Variable(n) gewählt hast.
+
+*Deine Antwort hier:*
+
+```{r}
+
+```
+
+## Aufgabe 9: Daten kommunizieren
 
 **Im YAML-Header (zwischen den drei Bindestrichen am Anfang des Dokuments)**
 
@@ -206,6 +231,6 @@ Schreibe Code, um ein Streudiagramm zu erstellen, das die Beziehung zwischen BIP
 
 2.  Wandel das Dokument in das HTML-Format um (Render) und behebe eventuelle Fehler.
 
-## Aufgabe 9: Commit & Push & Issue
+## Aufgabe 10: Commit & Push & Issue
 
--   Kehre nun zurück zur Kurswebseite und folge den Schritten um deine lokalen Veränderungen mit GitHub zu synchronisieren.
+- Kehre nun zurück zur Kurswebseite und folge den Schritten um deine lokalen Veränderungen mit GitHub zu synchronisieren. Suche dort nach dem Abschnitt zum GitHub-Workflow in Modul 2.

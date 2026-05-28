@@ -7,9 +7,16 @@ format:
 editor: visual
 execute:
   warning: false
+  message: false
 editor_options:
   chunk_output_type: console
 ---
+
+::: callout-tip
+## Wenn du nicht weiterkommst
+
+Wenn du an einer Aufgabe mehr als 10 bis 15 Minuten festhängst: öffne die Datei `01-boxplot-komplett.qmd`, vergleiche mit deinem Versuch, und versuche dann zu erklären, *warum* die Lösung funktioniert. Das ist erlaubt und Teil des Lernprozesses.
+:::
 
 ## Aufgabe 1: R-Pakete laden & Daten importieren
 
@@ -131,15 +138,17 @@ gapminder_zusammenfassung_kontinent_jahr <- gapminder |>
 
 ## Aufgabe 5: Erstelle einen angepassten Boxplot
 
+Ab hier schreibst du den Code selbst, ohne Vorlage. In der Übung in Modul 2 hast du bereits einen Boxplot für `gapminder_2007` erstellt; hier erweiterst du ihn um `fill = continent`.
+
 Dies ist eine typische Aufgabe ohne Anfangscode.
 
 1.  Unten wurde bereits ein Codeblock für dich erstellt.
 
 2.  Verwende die Funktion `ggplot()` und das Daten Objekt `gapminder_2007`, um einen Boxplot mit den folgenden visuellen Eigenschaften zu erstellen:
 
--   Kontinent (Variable: continent) auf der x-Achse
--   Lebenserwartung (Variable: lifeExp) auf der y-Achse
--   Kontinent als Farbe mit dem Argument `fill = continent` innerhalb von `aes()`
+- Kontinent (Variable: continent) auf der x-Achse
+- Lebenserwartung (Variable: lifeExp) auf der y-Achse
+- Kontinent als Farbe mit dem Argument `fill = continent` innerhalb von `aes()`
 
 3.  Führe den im Codeblock enthaltenen Code aus und behebe alle Fehler.
 
@@ -165,4 +174,4 @@ ggplot(data = gapminder_2007,
 
 ## Aufgabe 7: Commit & Push & Issue
 
--   Kehre nun zurück zur Kurswebseite und folge den Schritten um deine lokalen Veränderungen mit GitHub zu synchronisieren.
+- Kehre nun zurück zur Kurswebseite und folge den Schritten um deine lokalen Veränderungen mit GitHub zu synchronisieren. Suche dort nach dem Abschnitt zum GitHub-Workflow in Modul 2.
